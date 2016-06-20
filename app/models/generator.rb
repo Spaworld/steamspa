@@ -1,0 +1,2 @@
+class Generator < Product
+end
