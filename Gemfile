@@ -15,6 +15,7 @@ gem 'puma'
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.4'
+  gem 'factory_girl_rails', '~> 4.0'
   gem 'faker'
 end
 
@@ -27,7 +28,6 @@ end
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
-  gem 'factory_girl_rails', '~> 4.0'
   gem 'selenium-webdriver'
   gem 'poltergeist'
   gem 'whiny_validation'

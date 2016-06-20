@@ -4,7 +4,7 @@ RSpec.feature 'user visits kits page', type: :feature , js: true do
     @generators = create_list(:generator, 3)
   end
 
-  scenario 'sees default data' do
+  scenario 'sees correct number of generators' do
     visit kits_path
     expect(page).to have_selector('h4', count: 3)
   end
