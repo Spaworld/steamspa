@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.2.6'
 gem 'pg', '~> 0.15'
 gem 'bootstrap-sass', '~> 3.3.6'
@@ -12,10 +11,17 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
+
 gem 'redis'
 gem 'redis-rails'
+gem 'sidekiq'
+
+gem 'hirb'
+gem 'pry-rails'
+gem 'pry-byebug'
+
 group :development, :test do
-  gem 'byebug'
+  # gem 'byebug'
   gem 'rspec-rails', '~> 3.4'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'faker'
@@ -24,8 +30,6 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
-  gem 'pry-rails'
-  gem 'pry-byebug'
 end
 
 group :test do
