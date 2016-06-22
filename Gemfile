@@ -12,6 +12,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'puma'
+gem 'redis'
+gem 'redis-rails'
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails', '~> 3.4'
@@ -23,6 +25,7 @@ group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
   gem 'pry-rails'
+  gem 'pry-byebug'
 end
 
 group :test do

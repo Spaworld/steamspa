@@ -4,6 +4,7 @@ class CreateProducts < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.text :features, array: true, default: []
+      t.integer :category_id
 
       t.timestamps null: false
     end

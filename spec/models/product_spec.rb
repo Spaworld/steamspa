@@ -1,5 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Product, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  context 'validations' do
+    it 'belongs to a cateogory' do
+      # expect(subject.category).to
+    end
+  end
 end
