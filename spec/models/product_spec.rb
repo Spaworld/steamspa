@@ -19,12 +19,11 @@ RSpec.describe Product, type: :model do
     it 'invalid without features' do
       expect{ create(:product, features: nil) }.to raise_error(ActiveRecord::RecordInvalid)
     end
-
   end
 
-  # context 'associations' do
-  #   it 'belongs to a cateogory' do
-  #     pending
-  #   end
-  # end
+  context 'associations' do
+    it 'has many categories' do
+      expect(Product.reflect_on_association(:categories).macro).to eq(:has_many)
+    end
+  end
 end

@@ -12,7 +12,7 @@ class StaticController < ApplicationController
   end
 
   def set_generators
-    @generators = Generator.all
+    # @generators = Generator.all
   end
 
 end
