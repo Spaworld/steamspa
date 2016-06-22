@@ -23,9 +23,11 @@ RSpec.describe Variation, type: :model do
   end
 
   context 'associations' do
+
     it 'belongs to a specific product' do
       expect( Variation.reflect_on_association(:product).macro).to eq(:belongs_to)
     end
+
   end
 
 end

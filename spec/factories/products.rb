@@ -4,5 +4,6 @@ FactoryGirl.define do
     description { Faker::Lorem.paragraph }
     features    ['foo','bar','baz']
     variations  { build_list(:variation, 1) }
+    gallery     { build(:gallery) }
   end
 end

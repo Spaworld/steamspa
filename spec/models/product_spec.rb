@@ -36,10 +36,21 @@ RSpec.describe Product, type: :model do
       expect(Product.reflect_on_association(:variations).macro).to eq(:has_many)
     end
 
-    it 'will destroy associated variations on self.destroy' do
-      product = create(:product)
-      expect{ product.destroy }.to change { Variation.count }.by(-1)
+    context 'destroyable dependents' do
+      before(:each) do
+        @product = create(:product)
+      end
+
+      it 'will destroy associated variation' do
+        expect{ @product.destroy }.to change { Variation.count }.by(-1)
+      end
+
+      it 'will destroy associated gallery' do
+        expect{ @product.destroy }.to change { Gallery.count }.by(-1)
+      end
+
     end
+
 
   end
 
