@@ -2,8 +2,6 @@ FactoryGirl.define do
   factory :product do
     name        { Faker::Commerce.product_name }
     description { Faker::Lorem.paragraph }
-    features    ['a','b','c']
-    # trait :generator do
-    # end
+    features    ['foo','bar','baz']
   end
 end
