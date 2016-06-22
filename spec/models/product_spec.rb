@@ -22,6 +22,7 @@ RSpec.describe Product, type: :model do
   end
 
   context 'associations' do
+
     it 'has many categories' do
       expect(Product.reflect_on_association(:categories).macro).to eq(:has_many)
     end
