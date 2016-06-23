@@ -20,6 +20,8 @@ gem 'hirb'
 gem 'pry-rails'
 gem 'pry-byebug'
 
+gem "paperclip", "~> 4.3.1"
+
 group :development, :test do
   gem 'rspec-rails', '~> 3.4'
   gem 'factory_girl_rails', '~> 4.0'
