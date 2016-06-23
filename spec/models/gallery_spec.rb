@@ -12,9 +12,20 @@ RSpec.describe Gallery, type: :model do
     end
 
   end
+
   context 'associations' do
+
     it 'belongs to a product' do
       expect(Gallery.reflect_on_association(:product).macro).to eq(:belongs_to)
+    end
+
+    it 'has many photos' do
+      expect(Gallery.reflect_on_association(:photos).macro).to eq(:has_many)
+    end
+
+    it 'will destroy associated photos on self.destroy' do
+      @gallery = create(:gallery)
+      expect{ @gallery.destroy }.to change { Photo.count }.by(-1)
     end
   end
 
