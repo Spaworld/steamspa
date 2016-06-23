@@ -24,12 +24,13 @@ ActiveRecord::Schema.define(version: 20160623045409) do
   end
 
   create_table "galleries", force: :cascade do |t|
-    t.integer  "product_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "product_id"
+    t.integer  "variation_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
-  add_index "galleries", ["product_id"], name: "index_galleries_on_product_id", using: :btree
+  add_index "galleries", ["product_id", "variation_id"], name: "index_galleries_on_product_id_and_variation_id", using: :btree
 
   create_table "photos", force: :cascade do |t|
     t.integer  "gallery_id"
