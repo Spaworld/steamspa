@@ -15,6 +15,7 @@ RSpec.describe Blurb, type: :model do
     it 'is invalid without content' do
       expect{ create(:blurb, content: nil) }.to raise_exception(ActiveRecord::RecordInvalid)
     end
+
   end
 
 end
