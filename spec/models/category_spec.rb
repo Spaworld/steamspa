@@ -24,8 +24,12 @@ RSpec.describe Category, type: :model do
       expect(Category.reflect_on_association(:products).macro).to eq(:has_many)
     end
 
-    it 'has many product_categories(join table)' do
-      expect { create(:category).products.build }.to_not raise_error
+    it 'has many products through ProductCategories(join table)' do
+      expect{ create(:category).products.build }.to_not raise_error
+    end
+
+    it 'has many posts through PostCategories(joint table)' do
+      expect{ create(:category).posts.build }.to_not raise_error
     end
 
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160624012722) do
+ActiveRecord::Schema.define(version: 20160624175224) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,27 @@ ActiveRecord::Schema.define(version: 20160624012722) do
 
   add_index "photos", ["image_fingerprint"], name: "index_photos_on_image_fingerprint", unique: true, using: :btree
 
+  create_table "post_categories", force: :cascade do |t|
+    t.integer  "post_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "post_categories", ["post_id", "category_id"], name: "index_post_categories_on_post_id_and_category_id", unique: true, using: :btree
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "title",                   null: false
+    t.text     "body",                    null: false
+    t.integer  "author_id"
+    t.text     "tags",       default: [],              array: true
+    t.string   "slug"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "posts", ["title", "tags", "slug"], name: "index_posts_on_title_and_tags_and_slug", unique: true, using: :btree
+
   create_table "product_categories", force: :cascade do |t|
     t.integer  "category_id"
     t.integer  "product_id"
@@ -71,6 +92,16 @@ ActiveRecord::Schema.define(version: 20160624012722) do
 
   add_index "products", ["features"], name: "index_products_on_features", using: :gin
   add_index "products", ["name"], name: "index_products_on_name", using: :btree
+
+  create_table "users", force: :cascade do |t|
+    t.string   "first"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "username"
+    t.json     "roles",      default: [{"admin"=>false}, {"member"=>true}, {"author"=>false}]
+    t.datetime "created_at",                                                                   null: false
+    t.datetime "updated_at",                                                                   null: false
+  end
 
   create_table "variations", force: :cascade do |t|
     t.string   "type",        null: false
