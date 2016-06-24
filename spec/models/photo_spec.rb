@@ -18,10 +18,6 @@ RSpec.describe Photo, type: :model do
         expect{ create(:photo, image:File.new("#{ Rails.root }/spec/support/images/droste")) }.to raise_error(ActiveRecord::RecordInvalid)
       end
 
-      it 'must be unique' do
-        expect{ 2.times { create(:photo) } }.to raise_error(ActiveRecord::RecordNotUnique)
-      end
-
     end
 
   end
