@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Photo, type: :model do
 
   it 'has a valid factory' do
-    expect(build(:photo)).to be_valid
+    expect(create(:photo)).to be_valid
   end
 
   context 'validations' do
@@ -19,7 +19,7 @@ RSpec.describe Photo, type: :model do
       end
 
       it 'must be unique' do
-        pending
+        expect{ 2.times { create(:photo) } }.to raise_error(ActiveRecord::RecordNotUnique)
       end
 
     end
