@@ -39,5 +39,6 @@ group :test do
   gem 'selenium-webdriver'
   gem 'poltergeist'
   gem 'whiny_validation'
+  gem 'simplecov', require: false
 end
 
