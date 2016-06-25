@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160624175224) do
+ActiveRecord::Schema.define(version: 20160625021038) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 20160624175224) do
 
   create_table "photos", force: :cascade do |t|
     t.integer  "gallery_id"
+    t.integer  "user_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "image_file_name"
@@ -50,6 +51,7 @@ ActiveRecord::Schema.define(version: 20160624175224) do
     t.string   "image_fingerprint"
   end
 
+  add_index "photos", ["gallery_id", "user_id"], name: "index_photos_on_gallery_id_and_user_id", using: :btree
   add_index "photos", ["image_fingerprint"], name: "index_photos_on_image_fingerprint", unique: true, using: :btree
 
   create_table "post_categories", force: :cascade do |t|
@@ -94,14 +96,17 @@ ActiveRecord::Schema.define(version: 20160624175224) do
   add_index "products", ["name"], name: "index_products_on_name", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "first"
+    t.string   "first_name"
     t.string   "last_name"
-    t.string   "email"
     t.string   "username"
-    t.json     "roles",      default: [{"admin"=>false}, {"member"=>true}, {"author"=>false}]
-    t.datetime "created_at",                                                                   null: false
-    t.datetime "updated_at",                                                                   null: false
+    t.string   "phone"
+    t.string   "email",                                                                      null: false
+    t.jsonb    "roles",      default: [{"admin"=>false}, {"lead"=>true}, {"author"=>false}]
+    t.datetime "created_at",                                                                 null: false
+    t.datetime "updated_at",                                                                 null: false
   end
+
+  add_index "users", ["username", "email", "roles"], name: "index_users_on_username_and_email_and_roles", unique: true, using: :btree
 
   create_table "variations", force: :cascade do |t|
     t.string   "type",        null: false
