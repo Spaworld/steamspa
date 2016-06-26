@@ -18,4 +18,12 @@ RSpec.describe Blurb, type: :model do
 
   end
 
+  context 'associations' do
+
+    it 'belongs to a page' do
+      expect(Blurb.reflect_on_association(:page).macro).to eq(:belongs_to)
+    end
+
+  end
+
 end

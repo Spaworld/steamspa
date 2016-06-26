@@ -11,17 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160626040005) do
+ActiveRecord::Schema.define(version: 20160626201850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "blurbs", force: :cascade do |t|
-    t.string   "name"
-    t.text     "content"
+    t.string   "name",       null: false
+    t.text     "content",    null: false
+    t.integer  "page_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "blurbs", ["page_id"], name: "index_blurbs_on_page_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "name",        null: false
@@ -38,6 +41,16 @@ ActiveRecord::Schema.define(version: 20160626040005) do
   end
 
   add_index "galleries", ["product_id", "variation_id"], name: "index_galleries_on_product_id_and_variation_id", using: :btree
+
+  create_table "pages", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.text     "description"
+    t.string   "slug"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "pages", ["name", "slug"], name: "index_pages_on_name_and_slug", unique: true, using: :btree
 
   create_table "photos", force: :cascade do |t|
     t.integer  "gallery_id"
