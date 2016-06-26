@@ -6,10 +6,10 @@ FactoryGirl.define do
     phone      { Faker::PhoneNumber }
     email      { Faker::Internet.email }
     trait :admin do
-      roles    { ['admin': true] }
+      roles    { [admin: true] }
     end
     trait :author do
-      roles    { ['author': true] }
+      roles    { [author: true] }
     end
   end
 end

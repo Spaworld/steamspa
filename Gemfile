@@ -31,6 +31,7 @@ end
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+  gem 'rubocop', '~> 0.41.0', require: false
 end
 
 group :test do

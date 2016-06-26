@@ -7,9 +7,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string :phone
       t.string :email, null: false
       t.jsonb  :roles, default: [
-        {'admin':  false },
-        {'lead':   true },
-        {'author': false }
+        { admin:  false },
+        { lead:   true },
+        { author: false }
       ]
       t.timestamps null: false
     end
