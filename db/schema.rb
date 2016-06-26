@@ -11,14 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160626201850) do
+ActiveRecord::Schema.define(version: 20160626211058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "blurb_galleries", force: :cascade do |t|
+    t.integer  "blurb_id"
+    t.integer  "gallery_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "blurbs", force: :cascade do |t|
     t.string   "name",       null: false
-    t.text     "content",    null: false
+    t.text     "content"
     t.integer  "page_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -12,16 +12,21 @@ RSpec.describe Blurb, type: :model do
       expect{ create(:blurb, name: nil) }.to raise_exception(ActiveRecord::RecordInvalid)
     end
 
-    it 'is invalid without content' do
-      expect{ create(:blurb, content: nil) }.to raise_exception(ActiveRecord::RecordInvalid)
-    end
-
   end
 
   context 'associations' do
 
     it 'belongs to a page' do
       expect(Blurb.reflect_on_association(:page).macro).to eq(:belongs_to)
+    end
+
+    it 'has many galleries' do
+      expect(Blurb.reflect_on_association(:galleries).macro).to eq(:has_many)
+    end
+
+    it 'destroys associated galleries on #delete' do
+      blurb = create(:blurb)
+      expect{ blurb.destroy }.to change{ Gallery.count }.by(-1)
     end
 
   end
