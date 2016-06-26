@@ -11,112 +11,117 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160625021038) do
+ActiveRecord::Schema.define(version: 20160626040005) do
 
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "plpgsql"
 
-  create_table 'blurbs', force: :cascade do |t|
-    t.string   'name'
-    t.text     'content'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
+  create_table "blurbs", force: :cascade do |t|
+    t.string   "name"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
-  create_table 'categories', force: :cascade do |t|
-    t.string   'name',        null: false
-    t.text     'description'
-    t.datetime 'created_at',  null: false
-    t.datetime 'updated_at',  null: false
+  create_table "categories", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  create_table 'galleries', force: :cascade do |t|
-    t.integer  'product_id'
-    t.integer  'variation_id'
-    t.datetime 'created_at',   null: false
-    t.datetime 'updated_at',   null: false
+  create_table "galleries", force: :cascade do |t|
+    t.integer  "product_id"
+    t.integer  "variation_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
-  add_index 'galleries', ['product_id', 'variation_id'], name: 'index_galleries_on_product_id_and_variation_id', using: :btree
+  add_index "galleries", ["product_id", "variation_id"], name: "index_galleries_on_product_id_and_variation_id", using: :btree
 
-  create_table 'photos', force: :cascade do |t|
-    t.integer  'gallery_id'
-    t.integer  'user_id'
-    t.datetime 'created_at',         null: false
-    t.datetime 'updated_at',         null: false
-    t.string   'image_file_name'
-    t.string   'image_content_type'
-    t.integer  'image_file_size'
-    t.datetime 'image_updated_at'
-    t.string   'image_fingerprint'
+  create_table "photos", force: :cascade do |t|
+    t.integer  "gallery_id"
+    t.integer  "user_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "image_fingerprint"
   end
 
-  add_index 'photos', ['gallery_id', 'user_id'], name: 'index_photos_on_gallery_id_and_user_id', using: :btree
-  add_index 'photos', ['image_fingerprint'], name: 'index_photos_on_image_fingerprint', unique: true, using: :btree
+  add_index "photos", ["gallery_id", "user_id"], name: "index_photos_on_gallery_id_and_user_id", using: :btree
+  add_index "photos", ["image_fingerprint"], name: "index_photos_on_image_fingerprint", unique: true, using: :btree
 
-  create_table 'post_categories', force: :cascade do |t|
-    t.integer  'post_id'
-    t.integer  'category_id'
-    t.datetime 'created_at',  null: false
-    t.datetime 'updated_at',  null: false
+  create_table "post_categories", force: :cascade do |t|
+    t.integer  "post_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  add_index 'post_categories', ['post_id', 'category_id'], name: 'index_post_categories_on_post_id_and_category_id', unique: true, using: :btree
+  add_index "post_categories", ["post_id", "category_id"], name: "index_post_categories_on_post_id_and_category_id", unique: true, using: :btree
 
-  create_table 'posts', force: :cascade do |t|
-    t.string   'title',                   null: false
-    t.text     'body',                    null: false
-    t.integer  'author_id'
-    t.text     'tags',       default: [],              array: true
-    t.string   'slug'
-    t.datetime 'created_at',              null: false
-    t.datetime 'updated_at',              null: false
+  create_table "posts", force: :cascade do |t|
+    t.string   "title",                   null: false
+    t.text     "body",                    null: false
+    t.integer  "author_id"
+    t.text     "tags",       default: [],              array: true
+    t.string   "slug"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
-  add_index 'posts', ['title', 'tags', 'slug'], name: 'index_posts_on_title_and_tags_and_slug', unique: true, using: :btree
+  add_index "posts", ["title", "tags", "slug"], name: "index_posts_on_title_and_tags_and_slug", unique: true, using: :btree
 
-  create_table 'product_categories', force: :cascade do |t|
-    t.integer  'category_id'
-    t.integer  'product_id'
-    t.datetime 'created_at',  null: false
-    t.datetime 'updated_at',  null: false
+  create_table "product_categories", force: :cascade do |t|
+    t.integer  "category_id"
+    t.integer  "product_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  add_index 'product_categories', ['product_id', 'category_id'], name: 'index_product_categories_on_product_id_and_category_id', unique: true, using: :btree
+  add_index "product_categories", ["product_id", "category_id"], name: "index_product_categories_on_product_id_and_category_id", unique: true, using: :btree
 
-  create_table 'products', force: :cascade do |t|
-    t.string   'name',        null: false
-    t.text     'description'
-    t.string   'features',                 array: true
-    t.datetime 'created_at',  null: false
-    t.datetime 'updated_at',  null: false
+  create_table "products", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.text     "description"
+    t.string   "features",                 array: true
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  add_index 'products', ['features'], name: 'index_products_on_features', using: :gin
-  add_index 'products', ['name'], name: 'index_products_on_name', using: :btree
+  add_index "products", ["features"], name: "index_products_on_features", using: :gin
+  add_index "products", ["name"], name: "index_products_on_name", using: :btree
 
-  create_table 'users', force: :cascade do |t|
-    t.string   'first_name'
-    t.string   'last_name'
-    t.string   'username'
-    t.string   'phone'
-    t.string   'email',                                                                      null: false
-    t.jsonb    'roles',      default: [{'admin'=>false}, {'lead'=>true}, {'author'=>false}]
-    t.datetime 'created_at',                                                                 null: false
-    t.datetime 'updated_at',                                                                 null: false
+  create_table "users", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "username"
+    t.string   "phone"
+    t.string   "email",                                                                                          null: false
+    t.jsonb    "roles",                          default: [{"admin"=>false}, {"lead"=>true}, {"author"=>false}]
+    t.datetime "created_at",                                                                                     null: false
+    t.datetime "updated_at",                                                                                     null: false
+    t.string   "encrypted_password", limit: 128
+    t.string   "confirmation_token", limit: 128
+    t.string   "remember_token",     limit: 128
   end
 
-  add_index 'users', ['username', 'email', 'roles'], name: 'index_users_on_username_and_email_and_roles', unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
+  add_index "users", ["username", "email", "roles"], name: "index_users_on_username_and_email_and_roles", unique: true, using: :btree
 
-  create_table 'variations', force: :cascade do |t|
-    t.string   'type',        null: false
-    t.text     'value',       null: false
-    t.text     'description'
-    t.integer  'product_id',  null: false
-    t.datetime 'created_at',  null: false
-    t.datetime 'updated_at',  null: false
+  create_table "variations", force: :cascade do |t|
+    t.string   "type",        null: false
+    t.text     "value",       null: false
+    t.text     "description"
+    t.integer  "product_id",  null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
-  add_index 'variations', ['product_id'], name: 'index_variations_on_product_id', using: :btree
+  add_index "variations", ["product_id"], name: "index_variations_on_product_id", using: :btree
 
 end
