@@ -6,5 +6,15 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Page.create(name: 'Home')
-Page.last.blurbs.create(name: 'Slider')
+### Main Assets
+
+@logo = Blurb.create(name: 'Logo')
+@logo.galleries.create.photos.create(image:File.new("#{Rails.root}/app/assets/images/steamspa-logo.png"))
+@slider = Blurb.create(name: 'Slider')
+@slider.galleries.create.photos.create(image:File.new("#{Rails.root}/app/assets/images/slider-image-1.jpg"))
+@slider.galleries.create.photos.create(image:File.new("#{Rails.root}/app/assets/images/slider-image-2.jpg"))
+@slider.galleries.create.photos.create(image:File.new("#{Rails.root}/app/assets/images/slider-image-3.jpg"))
+
+### Pages
+@home_page = Page.create(name: 'Home')
+@home_page.blurbs << @slider

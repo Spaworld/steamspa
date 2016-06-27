@@ -6,7 +6,7 @@ class Photo < ActiveRecord::Base
   has_attached_file :image, styles: { thumb: '250x250>', medium: '500x500>', large: '1000x1000>' }
   validates_attachment :image, content_type: { content_type: /\Aimage\/.*\Z/ }, presence: true
 
-  validates :gallery_id, :user_id, uniqueness: true
+  validates :gallery_id, :user_id, uniqueness: true, allow_blank: true
   validate :orphanage
 
   private

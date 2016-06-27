@@ -4,5 +4,5 @@ class Gallery < ActiveRecord::Base
   has_many    :photos, dependent: :destroy
   has_many    :blurb_galleries
   has_many    :blurbs, through: :blurb_galleries
-  validates_uniqueness_of :product_id, :variation_id
+  validates_uniqueness_of :product_id, :variation_id, allow_blank: true
 end

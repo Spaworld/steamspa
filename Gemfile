@@ -20,6 +20,7 @@ gem 'sidekiq'
 gem 'hirb'
 gem 'pry-rails'
 gem 'pry-byebug'
+gem 'whiny_validation'
 
 gem 'paperclip', '~> 5.0.0.beta1'
 
@@ -40,7 +41,6 @@ group :test do
   gem 'database_cleaner'
   gem 'selenium-webdriver'
   gem 'poltergeist'
-  gem 'whiny_validation'
   gem 'simplecov', require: false
 end
 
