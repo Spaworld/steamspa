@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.6'
 gem 'pg', '~> 0.15'
-gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
@@ -23,6 +22,9 @@ gem 'pry-byebug'
 gem 'whiny_validation'
 
 gem 'paperclip', '~> 5.0.0.beta1'
+
+gem 'bourbon'
+gem 'neat'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.4'

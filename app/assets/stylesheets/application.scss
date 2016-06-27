@@ -1,2 +1,6 @@
-@import 'bootstrap-sprockets';
-@import 'bootstrap';
+@import 'bourbon';
+@import 'neat';
+
+.container{
+  @include outer-container;
+}
