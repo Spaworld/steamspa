@@ -20,6 +20,15 @@ RSpec.describe Blurb, type: :model do
       expect(Blurb.reflect_on_association(:page).macro).to eq(:belongs_to)
     end
 
+    it 'has many photos' do
+      expect(Blurb.reflect_on_association(:photos).macro).to eq(:has_many)
+    end
+
+    it 'destroys associated photo on #delete' do
+      blurb = create(:blurb)
+      expect{ blurb.destroy }.to change{ Photo.count }.by(-1)
+    end
+
     it 'has many galleries' do
       expect(Blurb.reflect_on_association(:galleries).macro).to eq(:has_many)
     end

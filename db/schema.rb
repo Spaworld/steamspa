@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20160626211058) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "blurb_galleries", ["blurb_id", "gallery_id"], name: "index_blurb_galleries_on_blurb_id_and_gallery_id", unique: true, using: :btree
+
   create_table "blurbs", force: :cascade do |t|
     t.string   "name",       null: false
     t.text     "content"
@@ -62,6 +64,7 @@ ActiveRecord::Schema.define(version: 20160626211058) do
   create_table "photos", force: :cascade do |t|
     t.integer  "gallery_id"
     t.integer  "user_id"
+    t.integer  "blurb_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "image_file_name"
@@ -71,7 +74,7 @@ ActiveRecord::Schema.define(version: 20160626211058) do
     t.string   "image_fingerprint"
   end
 
-  add_index "photos", ["gallery_id", "user_id"], name: "index_photos_on_gallery_id_and_user_id", using: :btree
+  add_index "photos", ["gallery_id", "user_id", "blurb_id"], name: "index_photos_on_gallery_id_and_user_id_and_blurb_id", using: :btree
   add_index "photos", ["image_fingerprint"], name: "index_photos_on_image_fingerprint", unique: true, using: :btree
 
   create_table "post_categories", force: :cascade do |t|

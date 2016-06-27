@@ -13,7 +13,7 @@ RSpec.describe Photo, type: :model do
     end
 
     it 'is invalid with empty gallery_id AND empty user_id' do
-      expect{ create(:photo, user_id: nil, gallery_id: nil) }.to raise_error(ActiveRecord::RecordInvalid)
+      expect{ create(:photo, user_id: nil, gallery_id: nil, blurb_id: nil) }.to raise_error(ActiveRecord::RecordInvalid)
     end
 
     context 'attachement' do
@@ -33,6 +33,10 @@ RSpec.describe Photo, type: :model do
 
     it 'belongs to user' do
       expect(Photo.reflect_on_association(:user).macro).to eq(:belongs_to)
+    end
+
+    it 'belongs to blurb' do
+      expect(Photo.reflect_on_association(:blurb).macro).to eq(:belongs_to)
     end
 
   end
