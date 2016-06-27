@@ -43,15 +43,6 @@ RSpec.describe Gallery, type: :model do
       expect(Gallery.reflect_on_association(:blurbs).macro).to eq(:has_many)
     end
 
-    example 'associated blurbs do not get destroyed when on gallery.destroy' do
-      Gallery.destroy_all
-      Photo.destroy_all
-      blurb = create(:blurb)
-      gallery = create(:gallery)
-      blurb.galleries << gallery
-      expect{ gallery.destroy }.to change{ Blurb.count }.by(0)
-    end
-
   end
 
 end
