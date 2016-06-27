@@ -9,7 +9,7 @@
 ### Main Assets
 
 @logo = Blurb.create(name: 'Logo')
-@logo.galleries.create.photos.create(image:File.new("#{Rails.root}/app/assets/images/steamspa-logo.png"))
+@logo.photos.create(image:File.new("#{Rails.root}/app/assets/images/steamspa-logo.png"))
 @slider = Blurb.create(name: 'Slider')
 @slider.galleries.create.photos.create(image:File.new("#{Rails.root}/app/assets/images/slider-image-1.jpg"))
 @slider.galleries.create.photos.create(image:File.new("#{Rails.root}/app/assets/images/slider-image-2.jpg"))
