@@ -28,7 +28,7 @@ RSpec.describe Category, type: :model do
       expect{ create(:category).products.build }.to_not raise_error
     end
 
-    it 'has many posts through PostCategories(joint table)' do
+    it 'has many posts through PostCategories(join table)' do
       expect{ create(:category).posts.build }.to_not raise_error
     end
 

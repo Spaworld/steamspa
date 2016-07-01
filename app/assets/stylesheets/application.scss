@@ -1,6 +1,7 @@
 @import 'bourbon';
 @import 'neat';
+@import 'settings/*';
+@import 'globals/*';
+@import 'partials/*';
+@import 'refills/main';
 
-.container{
-  @include outer-container;
-}

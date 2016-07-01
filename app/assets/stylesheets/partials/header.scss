@@ -1,0 +1,44 @@
+#header{
+  background-color: $dark-grey
+}
+
+#promo-message{
+  background-color: $blue;
+  text-align: center;
+  p{
+    color: $white;
+    padding: $standard-padding;
+  }
+}
+
+#target{
+  display:block;
+  background-color:red;
+}
+
+#profile{
+  @include span-columns(10);
+  a, input{
+    @include span-columns(10 of 10);
+    color: $white;
+    font-size: 0.8em;
+    text-align: right;
+  }
+}
+
+#logo-section{
+  @include span-columns(10);
+  img{
+    // @include span-columns(3);
+    float:left;
+    margin-bottom:3em;
+  }
+  p{
+    // @include span-columns(6);
+    float: right;
+    color: $white;
+    font-size:1.3em;
+    text-align:right;
+    padding-top:30px;
+  }
+}

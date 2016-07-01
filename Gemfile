@@ -25,6 +25,7 @@ gem 'paperclip', '~> 5.0.0.beta1'
 
 gem 'bourbon'
 gem 'neat'
+gem "refills", group: :development
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.4'
