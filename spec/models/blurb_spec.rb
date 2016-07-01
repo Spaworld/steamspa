@@ -40,4 +40,17 @@ RSpec.describe Blurb, type: :model do
 
   end
 
+  context 'seeded blurbs fetching' do
+
+    before(:each) do
+      allow(Rails).to receive(:env).and_return(ActiveSupport::StringInquirer.new('development'))
+      create(:blurb, name: 'Logo', photos: build_list(:photo, 1))
+    end
+
+    it 'fetches the logo image' do
+      expect(Blurb.logo_image).to_not be_nil
+    end
+
+  end
+
 end

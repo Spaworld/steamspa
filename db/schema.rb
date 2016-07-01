@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160626211058) do
+ActiveRecord::Schema.define(version: 20160701160504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,30 @@ ActiveRecord::Schema.define(version: 20160626211058) do
   end
 
   add_index "galleries", ["product_id", "variation_id"], name: "index_galleries_on_product_id_and_variation_id", using: :btree
+
+  create_table "menu_items", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "menu_position"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "menu_options", force: :cascade do |t|
+    t.integer  "menu_id"
+    t.integer  "menu_item_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "menu_options", ["menu_id", "menu_item_id"], name: "index_menu_options_on_menu_id_and_menu_item_id", unique: true, using: :btree
+
+  create_table "menus", force: :cascade do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "menus", ["name"], name: "index_menus_on_name", unique: true, using: :btree
 
   create_table "pages", force: :cascade do |t|
     t.string   "name",        null: false

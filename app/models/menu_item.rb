@@ -1,0 +1,8 @@
+class MenuItem < ActiveRecord::Base
+
+  validates_presence_of :name, :menu_position
+
+  has_many :menu_options
+  has_many :menus, through: :menu_options
+
+end
