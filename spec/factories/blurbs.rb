@@ -6,5 +6,6 @@ FactoryGirl.define do
     after(:create) do |blurb|
       blurb.galleries << create(:gallery)
     end
+    photos    { build_list(:photo, 1, :other_photo) }
   end
 end

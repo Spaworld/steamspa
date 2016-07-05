@@ -26,6 +26,7 @@ RSpec.describe Blurb, type: :model do
 
     it 'destroys associated photo on #delete' do
       blurb = create(:blurb)
+      blurb.galleries.destroy_all
       expect{ blurb.destroy }.to change{ Photo.count }.by(-1)
     end
 
@@ -47,12 +48,16 @@ RSpec.describe Blurb, type: :model do
     end
 
     it 'fetches the logo image' do
-      create(:blurb, name: 'Logo', photos: build_list(:photo, 1))
-      expect(Blurb.logo_image).to_not be_nil
+      # create(:blurb, name: 'Logo', photos: build_list(:photo, 1, :logo))
+      blurb = double(Blurb)
+      photos = build_list(:photo, 1)
+      allow(blurb).to receive(:logo_image).and_return(photos)
+      expect(blurb.logo_image).to eq(photos)
+      # expect(Blurb.logo_image).to_not be_nil
     end
 
     it 'fetches the promo message blurb' do
-      create(:blurb, name: 'Promo Message')
+      create(:blurb, name: 'Promo Message', photos:  build_list(:photo, 1, :other_photo))
       expect(Blurb.promo_message_blurb).to_not be_nil
     end
 

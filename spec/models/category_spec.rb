@@ -32,6 +32,14 @@ RSpec.describe Category, type: :model do
       expect{ create(:category).posts.build }.to_not raise_error
     end
 
+    it 'has many menu_items' do
+      expect(Category.reflect_on_association(:menu_items).macro).to eq(:has_many)
+    end
+
+    it 'has many menu_items via MenuItemCategories(join table)' do
+      expect{ create(:category).menu_items.build }.to_not raise_error
+    end
+
   end
 
 end

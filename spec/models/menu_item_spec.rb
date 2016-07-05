@@ -21,16 +21,24 @@ RSpec.describe MenuItem, type: :model do
       expect(MenuItem.reflect_on_association(:menus).macro).to eq(:has_many)
     end
 
-    it 'has menu menus through MenuOptions (join table)' do
+    it 'has many menus through MenuOptions (join table)' do
       expect{ create(:menu_item).menus.build }.to_not raise_error
 
     end
 
     it 'has many categories' do
+      expect(MenuItem.reflect_on_association(:categories).macro).to eq(:has_many)
+    end
+
+    it 'has many categories through MenuCategories (join table)' do
+      expect{ create(:menu_item).categories.build }.to_not raise_error
+    end
+
+    it 'has many many pages' do
       pending
     end
 
-    it 'has many categories through MenuPages (join table)' do
+    it 'has many pages through MenuPages (join table)' do
       pending
     end
 

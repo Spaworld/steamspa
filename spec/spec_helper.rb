@@ -17,13 +17,6 @@ RSpec.configure do |config|
   # FactoryGirl Syntax
   config.include FactoryGirl::Syntax::Methods
 
-  # Setting site-wide vars
-  config.before(:each, type: [:controller, :feature]) do
-    puts Blurb.count
-    FactoryGirl.create(:blurb, name: 'Logo')
-    FactoryGirl.create(:blurb, name: 'Promo Message')
-  end
-
   # PaperClip test files deletion
   config.after(:suite) do
     FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
