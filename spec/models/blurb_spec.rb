@@ -48,12 +48,8 @@ RSpec.describe Blurb, type: :model do
     end
 
     it 'fetches the logo image' do
-      # create(:blurb, name: 'Logo', photos: build_list(:photo, 1, :logo))
-      blurb = double(Blurb)
-      photos = build_list(:photo, 1)
-      allow(blurb).to receive(:logo_image).and_return(photos)
-      expect(blurb.logo_image).to eq(photos)
-      # expect(Blurb.logo_image).to_not be_nil
+      create(:blurb, name: 'Logo', photos: build_list(:photo, 1, :other_photo))
+      expect(Blurb.logo_image).to_not be_empty
     end
 
     it 'fetches the promo message blurb' do
