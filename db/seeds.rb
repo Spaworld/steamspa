@@ -44,16 +44,21 @@ def create_products
     ]
   )
   @stem_generator_45 = Variation.create(
-    name:         '45KW QuickStart Steam Generator'
+    name:         '45KW QuickStart Steam Generator',
+    product_id:   1
+  )
+  Attribute.create(
+    name:         'wattage',
+    value:        '4.5KW',
+    variation_id: 1
   )
   @steam_generator.categories << @steam_generators_category
-  @steam_generator.variations << @steam_generator_45
 end
 
 def create_menus_and_menu_items
   @header_menu        = Menu.create(name: 'Home')
   @products_menu_item = MenuItem.create(name: 'Products', menu_position: 0)
-  @products_menu_item.categories << Product.all.map {|p| p.categories }
+  @products_menu_item.categories << Product.all.map { |p| p.categories }
 end
 
 create_blurbs
