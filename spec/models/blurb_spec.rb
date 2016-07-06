@@ -54,9 +54,8 @@ RSpec.describe Blurb, type: :model do
 
     it 'fetches the promo message blurb' do
       create(:blurb, name: 'Promo Message', photos:  build_list(:photo, 1, :other_photo))
-      expect(Blurb.promo_message_blurb).to_not be_nil
+      expect(Blurb.promo_message_blurb).to_not be_empty
     end
-
 
   end
 
