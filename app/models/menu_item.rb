@@ -14,4 +14,7 @@ class MenuItem < ActiveRecord::Base
   has_many :menu_item_products
   has_many :products, through: :menu_item_products
 
+  has_many :menu_item_posts
+  has_many :posts, through: :menu_item_posts
+
 end

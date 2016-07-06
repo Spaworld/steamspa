@@ -51,7 +51,11 @@ RSpec.describe MenuItem, type: :model do
     end
 
     it 'has many post categories' do
-      pending
+      expect(MenuItem.reflect_on_association(:posts).macro).to eq(:has_many)
+    end
+
+    it 'has many post categories through MenuItemPosts(join table)' do
+      expect{ create(:menu_item).posts.build }.to_not raise_error
     end
 
   end
