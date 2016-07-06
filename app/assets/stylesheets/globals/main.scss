@@ -2,6 +2,7 @@ body{
   margin:0;
   padding:0;
   -webkit-font-smoothing: antialiased;
+  font-family: 'Open Sans', sans-serif;
 }
 .container{
   @include outer-container;

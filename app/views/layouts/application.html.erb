@@ -4,16 +4,17 @@
     <%= stylesheet_link_tag 'application' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tag %>
-    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,800,700,600,300' rel='stylesheet' type='text/css'>
-    <link href='//fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,700' rel='stylesheet' type='text/css'>
+    <%= google_webfonts_link_tag open_sans: [400, 700] %>
   </head>
   <body>
 
     <%= render 'layouts/flashes' %>
+
     <div id="header">
       <%= render 'layouts/promo_message' %>
       <div class="container">
-
+        <!-- Naviagation -->
+        <%= render 'refills/navigation' %>
         <!-- Profile -->
         <div id="profile">
           <% if signed_in? %>
@@ -28,7 +29,6 @@
 
       </div><!--end .container-->
     </div><!--end #header-->
-    <%= render 'refills/type_system_slab' %>
     <%= yield %>
   </body>
 </html>
