@@ -5,6 +5,6 @@ class CreateMenuItemCategories < ActiveRecord::Migration
       t.integer :menu_item_id, null: false
       t.timestamps null: false
     end
-    add_index :menu_item_categories, [:menu_item_id, :category_id], unique: true
+    add_index :menu_item_categories, [:menu_item_id, :category_id]
   end
 end

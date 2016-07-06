@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160705233150) do
+ActiveRecord::Schema.define(version: 20160706002956) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +68,24 @@ ActiveRecord::Schema.define(version: 20160705233150) do
   end
 
   add_index "menu_item_categories", ["menu_item_id", "category_id"], name: "index_menu_item_categories_on_menu_item_id_and_category_id", unique: true, using: :btree
+
+  create_table "menu_item_pages", force: :cascade do |t|
+    t.integer  "menu_item_id", null: false
+    t.integer  "page_id",      null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "menu_item_pages", ["menu_item_id", "page_id"], name: "index_menu_item_pages_on_menu_item_id_and_page_id", unique: true, using: :btree
+
+  create_table "menu_item_products", force: :cascade do |t|
+    t.integer  "menu_item_id", null: false
+    t.integer  "product_id",   null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "menu_item_products", ["menu_item_id", "product_id"], name: "index_menu_item_products_on_menu_item_id_and_product_id", using: :btree
 
   create_table "menu_items", force: :cascade do |t|
     t.string   "name"

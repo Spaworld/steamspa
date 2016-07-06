@@ -29,6 +29,14 @@ RSpec.describe Page, type: :model do
       expect{ page.destroy }.to change { Blurb.count }.by (-1)
     end
 
+    it 'has many menu items' do
+      expect(Page.reflect_on_association(:menu_items).macro).to eq(:has_many)
+    end
+
+    it 'has many menu items via MenuPages(join table)' do
+      expect { create(:page).menu_items.build }.to_not raise_error
+    end
+
   end
 
 end

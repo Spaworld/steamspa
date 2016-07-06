@@ -35,15 +35,19 @@ RSpec.describe MenuItem, type: :model do
     end
 
     it 'has many many pages' do
-      pending
+      expect(MenuItem.reflect_on_association(:pages).macro).to eq(:has_many)
     end
 
     it 'has many pages through MenuPages (join table)' do
-      pending
+      expect{ create(:menu_item).pages.build }.to_not raise_error
     end
 
     it 'has many product categories' do
-      pending
+      expect(MenuItem.reflect_on_association(:products).macro).to eq(:has_many)
+    end
+
+    it 'has many products through MenuItemProducts (join table)' do
+      expect{ create(:menu_item).products.build }.to_not raise_error
     end
 
     it 'has many post categories' do
