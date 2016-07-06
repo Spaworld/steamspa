@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160706010632) do
+ActiveRecord::Schema.define(version: 20160706044818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "attributes", force: :cascade do |t|
+    t.string   "name",         null: false
+    t.string   "value",        null: false
+    t.integer  "variation_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "attributes", ["variation_id"], name: "index_attributes_on_variation_id", using: :btree
 
   create_table "blurb_galleries", force: :cascade do |t|
     t.integer  "blurb_id"
@@ -51,15 +61,6 @@ ActiveRecord::Schema.define(version: 20160706010632) do
 
   add_index "galleries", ["product_id", "variation_id"], name: "index_galleries_on_product_id_and_variation_id", using: :btree
 
-  create_table "menu_categories", force: :cascade do |t|
-    t.integer  "category_id",  null: false
-    t.integer  "menu_item_id", null: false
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-  end
-
-  add_index "menu_categories", ["category_id", "menu_item_id"], name: "index_menu_categories_on_category_id_and_menu_item_id", unique: true, using: :btree
-
   create_table "menu_item_categories", force: :cascade do |t|
     t.integer  "category_id",  null: false
     t.integer  "menu_item_id", null: false
@@ -67,7 +68,7 @@ ActiveRecord::Schema.define(version: 20160706010632) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "menu_item_categories", ["menu_item_id", "category_id"], name: "index_menu_item_categories_on_menu_item_id_and_category_id", unique: true, using: :btree
+  add_index "menu_item_categories", ["menu_item_id", "category_id"], name: "index_menu_item_categories_on_menu_item_id_and_category_id", using: :btree
 
   create_table "menu_item_pages", force: :cascade do |t|
     t.integer  "menu_item_id", null: false
@@ -76,7 +77,7 @@ ActiveRecord::Schema.define(version: 20160706010632) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "menu_item_pages", ["menu_item_id", "page_id"], name: "index_menu_item_pages_on_menu_item_id_and_page_id", unique: true, using: :btree
+  add_index "menu_item_pages", ["menu_item_id", "page_id"], name: "index_menu_item_pages_on_menu_item_id_and_page_id", using: :btree
 
   create_table "menu_item_posts", force: :cascade do |t|
     t.integer  "post_id",      null: false
@@ -206,8 +207,7 @@ ActiveRecord::Schema.define(version: 20160706010632) do
   add_index "users", ["username", "email", "roles"], name: "index_users_on_username_and_email_and_roles", unique: true, using: :btree
 
   create_table "variations", force: :cascade do |t|
-    t.string   "type",        null: false
-    t.text     "value",       null: false
+    t.string   "name",        null: false
     t.text     "description"
     t.integer  "product_id",  null: false
     t.datetime "created_at",  null: false

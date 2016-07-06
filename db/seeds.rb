@@ -27,9 +27,41 @@ def create_pages
   @free_quote_page    = Page.create(name: 'Free Quote')
 end
 
+def create_categories
+  @steam_generators_category = Category.create(name: 'Steam Generators', description: 'SteamSpa utilizes the latest innovations in compressed hydrothermal techology to generate a steady flow of rich, soothing steam. Click here to find out how SteamSpa will bring the sauna to you.')
+end
+
+def create_products
+  @steam_generator = Product.create(
+    name: 'QuickStart Steam Generator Unit',
+    description: "SteamSpa crafts the most advanced steam producing generator unit in today's market. Constructed of high tension stainless steel for lasting longevity the QuickStart steam producing generators are designed to be the core piece of your personal steam spa oasis.<br/> The QuickStart steam generator incorporates high end designs and technology into each unit as standard features creating an impressive valued deal you cannot afford to pass up.",
+    features:[
+    'QuickStart Technology',
+    'Continuous Steam Output',
+    'Built-in AutoDrain',
+    'Whisper Quiet Design',
+    'Superior Craftsmanship'
+    ]
+  )
+  @stem_generator_45 = Variation.create(
+    name:         '45KW QuickStart Steam Generator'
+  )
+  @steam_generator.categories << @steam_generators_category
+  @steam_generator.variations << @steam_generator_45
+end
+
+def create_menus_and_menu_items
+  @header_menu        = Menu.create(name: 'Home')
+  @products_menu_item = MenuItem.create(name: 'Products', menu_position: 0)
+  @products_menu_item.categories << Product.all.map {|p| p.categories }
+end
+
 create_blurbs
 create_photos
 create_pages
+create_categories
+create_products
+create_menus_and_menu_items
 @logo_blurb.photos << @logo_photo
 @home_page.blurbs << @logo_blurb
 @home_page.blurbs << @slider_blurb
