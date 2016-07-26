@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160726012409) do
+ActiveRecord::Schema.define(version: 20160726014059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,14 @@ ActiveRecord::Schema.define(version: 20160726012409) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "blurbs_pages", id: false, force: :cascade do |t|
+    t.integer "blurb_id", null: false
+    t.integer "page_id",  null: false
+  end
+
+  add_index "blurbs_pages", ["blurb_id", "page_id"], name: "index_blurbs_pages_on_blurb_id_and_page_id", using: :btree
+  add_index "blurbs_pages", ["page_id", "blurb_id"], name: "index_blurbs_pages_on_page_id_and_blurb_id", using: :btree
 
   create_table "blurbs_photos", id: false, force: :cascade do |t|
     t.integer "blurb_id", null: false
@@ -46,6 +54,14 @@ ActiveRecord::Schema.define(version: 20160726012409) do
 
   add_index "categories_photos", ["category_id", "photo_id"], name: "index_categories_photos_on_category_id_and_photo_id", using: :btree
   add_index "categories_photos", ["photo_id", "category_id"], name: "index_categories_photos_on_photo_id_and_category_id", using: :btree
+
+  create_table "pages", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "slug"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "photos", force: :cascade do |t|
     t.string   "name"
