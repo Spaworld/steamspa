@@ -5,7 +5,14 @@
         1,
         null
       ],
-      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/feature.rb": [
+      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/controllers/application_controller.rb": [
+        1,
+        null,
+        null,
+        1,
+        null
+      ],
+      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/blurb.rb": [
         1,
         null,
         1,
@@ -42,115 +49,108 @@
         null,
         null
       ],
-      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/controllers/application_controller.rb": [
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/product.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/variation.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/product_category.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/variation_photo.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/photo.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/blurb.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/product_photo.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
+      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/feature.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null
       ],
       "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/page.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        null
+      ],
+      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/photo.rb": [
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null
+      ],
+      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/product_category.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/product_photo.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/product.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        null
+      ],
+      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/variation_photo.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/variation.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null
       ]
     },
-    "timestamp": 1469500215
+    "timestamp": 1469500288
   }
 }
