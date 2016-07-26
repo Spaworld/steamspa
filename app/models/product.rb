@@ -7,4 +7,8 @@ class Product < ActiveRecord::Base
   has_many :product_photos
   has_many :photos, through: :product_photos, dependent: :destroy
 
+  has_many :product_categories
+  has_many :categories, through: :product_categories
+
+
 end

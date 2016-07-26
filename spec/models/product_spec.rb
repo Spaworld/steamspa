@@ -30,6 +30,8 @@ RSpec.describe Product, type: :model do
       expect { product.destroy }.to change{ ProductPhoto.count }.by(-1)
     end
 
+    it { should have_many(:categories).through(:product_categories) }
+
   end
 
 end
