@@ -16,6 +16,7 @@ RSpec.describe Category, type: :model do
 
     it { should have_and_belong_to_many(:photos) }
     it { should have_many(:products).through(:product_categories) }
+    it { should have_many(:features).through(:category_features) }
     it { should have_one(:parent) }
 
     it 'should return parent category' do

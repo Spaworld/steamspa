@@ -7,6 +7,9 @@ class Category < ActiveRecord::Base
   has_many :product_categories
   has_many :products, through: :product_categories
 
+  has_many :category_features
+  has_many :features, through: :category_features
+
   has_one :parent, class_name: Category, foreign_key: :parent_id
 
 end

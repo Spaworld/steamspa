@@ -5,21 +5,39 @@
         1,
         null
       ],
-      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/page.rb": [
+      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/feature.rb": [
         1,
         null,
         1,
         null,
+        1,
         1,
         null,
         null
       ],
-      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/blurb.rb": [
+      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/category_feature.rb": [
         1,
         null,
         1,
         null,
         1,
+        1,
+        null,
+        null
+      ],
+      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/category.rb": [
+        1,
+        null,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        null,
         1,
         null,
         null
@@ -103,6 +121,16 @@
         0,
         0
       ],
+      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/blurb.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
       "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/product_photo.rb": [
         0,
         0,
@@ -113,12 +141,7 @@
         0,
         0
       ],
-      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/category.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
+      "/home/dimanyc/Desktop/ruby_sandbox/steamspa/app/models/page.rb": [
         0,
         0,
         0,
@@ -128,6 +151,6 @@
         0
       ]
     },
-    "timestamp": 1469497577
+    "timestamp": 1469500215
   }
 }
