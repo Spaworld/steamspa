@@ -19,6 +19,7 @@ RSpec.describe Category, type: :model do
     it { should have_many(:features).through(:category_features) }
     it { should have_one(:parent) }
     it { should have_many(:menu_items).through(:menu_item_categories).dependent(:destroy) }
+    it { should have_many(:posts).through(:post_categories) }
 
     it 'should return parent category' do
       parent_cateogry = create(:category)

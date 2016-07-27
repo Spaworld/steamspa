@@ -12,8 +12,8 @@ RSpec.describe MenuItem, type: :model do
     it { should have_many(:pages).through(:menu_item_pages) }
     it { should have_many(:products).through(:menu_item_products) }
     it { should have_many(:categories).through(:menu_item_categories) }
+    it { should have_many(:posts).through(:menu_item_posts) }
 
   end
-
 
 end

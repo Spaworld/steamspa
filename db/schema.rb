@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160727021658) do
+ActiveRecord::Schema.define(version: 20160727035927) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,13 @@ ActiveRecord::Schema.define(version: 20160727021658) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "menu_item_posts", force: :cascade do |t|
+    t.integer  "menu_item_id"
+    t.integer  "post_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "menu_item_products", force: :cascade do |t|
     t.integer  "menu_item_id"
     t.integer  "product_id"
@@ -120,6 +127,21 @@ ActiveRecord::Schema.define(version: 20160727021658) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+  end
+
+  create_table "post_categories", force: :cascade do |t|
+    t.integer  "post_id"
+    t.integer  "category_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "slug"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "product_categories", force: :cascade do |t|
