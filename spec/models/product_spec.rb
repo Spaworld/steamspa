@@ -32,6 +32,8 @@ RSpec.describe Product, type: :model do
 
     it { should have_many(:categories).through(:product_categories) }
 
+    it { should have_many(:menu_items).through(:menu_item_products).dependent(:destroy) }
+
   end
 
 end

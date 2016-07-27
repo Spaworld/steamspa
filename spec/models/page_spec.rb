@@ -15,6 +15,7 @@ RSpec.describe Page, type: :model do
   context 'associations' do
 
     it { should have_and_belong_to_many(:blurbs) }
+    it { should have_many(:menu_items).through(:menu_item_pages).dependent(:destroy) }
 
   end
 

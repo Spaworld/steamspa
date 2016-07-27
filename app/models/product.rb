@@ -10,5 +10,8 @@ class Product < ActiveRecord::Base
   has_many :product_categories
   has_many :categories, through: :product_categories
 
+  has_many :menu_item_products
+  has_many :menu_items, through: :menu_item_products, dependent: :destroy
+
 
 end

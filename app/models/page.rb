@@ -4,4 +4,7 @@ class Page < ActiveRecord::Base
 
   has_and_belongs_to_many :blurbs
 
+  has_many :menu_item_pages
+  has_many :menu_items, through: :menu_item_pages, dependent: :destroy
+
 end
