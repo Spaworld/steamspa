@@ -7,4 +7,8 @@ class Variation < ActiveRecord::Base
   has_many :variation_photos
   has_many :photos, through: :variation_photos, dependent: :destroy
 
+  def features
+    CategoryFeature.where(category_id: product.id).map(&:features)
+  end
+
 end

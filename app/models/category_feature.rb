@@ -5,4 +5,8 @@ class CategoryFeature < ActiveRecord::Base
   belongs_to :category
   belongs_to :feature
 
+  def features
+    Feature.where(id: feature_id)
+  end
+
 end

@@ -19,4 +19,9 @@ RSpec.describe Feature, type: :model do
 
   end
 
+  it 'should inherit features from parent product categories' do
+    variation = create(:variation, :with_features)
+    expect(variation.features).to eq (variation.product.categories.map(&:features) )
+  end
+
 end

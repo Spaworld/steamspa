@@ -26,4 +26,9 @@ RSpec.describe Variation, type: :model do
 
   end
 
+  it 'should return associated features' do
+    variation = build(:variation, :with_features)
+    expect(variation.features).to_not be_empty
+  end
+
 end
