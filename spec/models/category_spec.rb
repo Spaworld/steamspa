@@ -18,13 +18,13 @@ RSpec.describe Category, type: :model do
     it { should have_many(:products).through(:product_categories) }
     it { should have_many(:features).through(:category_features) }
     it { should have_one(:parent) }
+    it { should have_many(:menu_items).through(:menu_item_categories).dependent(:destroy) }
 
     it 'should return parent category' do
       parent_cateogry = create(:category)
       child_category = create(:category)
       child_category.parent = parent_cateogry
       expect(child_category.parent).to eq(parent_cateogry)
-
     end
 
   end
