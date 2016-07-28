@@ -4,6 +4,7 @@ SimpleCov.start 'rails'
 require 'factory_girl_rails'
 require 'support/database_cleaner'
 require 'paperclip/matchers'
+require 'capybara/rspec'
 
 RSpec.configure do |config|
 
