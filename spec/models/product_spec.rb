@@ -15,6 +15,10 @@ RSpec.describe Product, type: :model do
   context 'associations' do
 
     it { should have_many(:variations).dependent(:destroy) }
+    it { should have_many(:categories).through(:product_categories) }
+    it { should have_many(:menu_items).through(:menu_item_products).dependent(:destroy) }
+    it { should have_and_belong_to_many(:tags) }
+    it { should have_many(:photos).through(:product_photos) }
 
     it 'should implicitly delele associated variation on self#destroy' do
       product = create(:product)
@@ -22,17 +26,11 @@ RSpec.describe Product, type: :model do
       expect { product.destroy }.to change{ Variation.count }.by(-1)
     end
 
-    it { should have_many(:photos).through(:product_photos) }
-
     it 'should destroy associated product_photo on self#destroy' do
       product = create(:product)
       product.photos << create(:photo)
       expect { product.destroy }.to change{ ProductPhoto.count }.by(-1)
     end
-
-    it { should have_many(:categories).through(:product_categories) }
-
-    it { should have_many(:menu_items).through(:menu_item_products).dependent(:destroy) }
 
   end
 

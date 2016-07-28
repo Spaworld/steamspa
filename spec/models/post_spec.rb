@@ -17,6 +17,7 @@ RSpec.describe Post, type: :model do
 
     it { should have_many(:menu_items).through(:menu_item_posts).dependent(:destroy) }
     it { should have_many(:categories).through(:post_categories) }
+    it { should have_and_belong_to_many(:tags) }
 
   end
 

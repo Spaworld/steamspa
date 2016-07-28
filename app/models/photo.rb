@@ -8,6 +8,7 @@ class Photo < ActiveRecord::Base
 
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :blurbs
+  has_and_belongs_to_many :tags
 
   # PaperClip
   has_attached_file :image,

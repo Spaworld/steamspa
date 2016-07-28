@@ -18,6 +18,9 @@ RSpec.describe Photo, type: :model do
 
     it { should have_many(:products).through(:product_photos) }
     it { should have_many(:variations).through(:variation_photos) }
+    it { should have_and_belong_to_many(:tags) }
+    it { should have_and_belong_to_many(:categories) }
+    it { should have_and_belong_to_many(:blurbs) }
 
   end
 
