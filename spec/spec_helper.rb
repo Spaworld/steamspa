@@ -22,4 +22,9 @@ RSpec.configure do |config|
   # PaperClip shouldas
   config.include Paperclip::Shoulda::Matchers
 
+  # removes PaperClip images
+  config.after(:suite) do
+    FileUtils.rm_rf(Dir["#{Rails.root}/spec/test_files/"])
+  end
+
 end

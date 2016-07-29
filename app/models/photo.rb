@@ -6,6 +6,9 @@ class Photo < ActiveRecord::Base
   has_many :variation_photos
   has_many :variations, through: :variation_photos
 
+  has_many :user_photos
+  has_many :users, through: :user_photos
+
   has_and_belongs_to_many :categories
   has_and_belongs_to_many :blurbs
   has_and_belongs_to_many :tags

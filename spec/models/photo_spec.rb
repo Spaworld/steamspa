@@ -21,6 +21,7 @@ RSpec.describe Photo, type: :model do
     it { should have_and_belong_to_many(:tags) }
     it { should have_and_belong_to_many(:categories) }
     it { should have_and_belong_to_many(:blurbs) }
+    it { should have_many(:users).through(:user_photos) }
 
   end
 
