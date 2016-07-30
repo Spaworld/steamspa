@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   serialize :roles, HashSerializer
   store_accessor :roles, :admin, :contributor, :member
 
+  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+
   def admin?
     roles[:admin]
   end
