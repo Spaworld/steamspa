@@ -1,6 +1,5 @@
-require "#{Rails.root}/lib/hash_serializer"
-
 class User < ActiveRecord::Base
+  rolify
 
   validates_presence_of :username, :email
 
@@ -9,22 +8,7 @@ class User < ActiveRecord::Base
 
   after_destroy :destroy_user_photos
 
-  serialize :roles, HashSerializer
-  store_accessor :roles, :admin, :contributor, :member
-
   validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
-
-  def admin?
-    roles[:admin]
-  end
-
-  def contributor?
-    roles[:contributor]
-  end
-
-  def member?
-    roles[:member]
-  end
 
   private
 

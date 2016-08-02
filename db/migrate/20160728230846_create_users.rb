@@ -6,11 +6,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string :username
       t.string :phone
       t.string :email
-      t.jsonb :roles, default: {
-        'admin':       false,
-        'contributor': false,
-        'member':      true
-      }
       t.timestamps null: false
     end
   end

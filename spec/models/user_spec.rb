@@ -26,26 +26,30 @@ RSpec.describe User, type: :model do
 
   context 'roles' do
 
-    let(:admin)       { build(:user, :admin) }
-    let(:contributor) { build(:user, :contributor) }
-    let(:member)      { build(:user, :member) }
-
-    example 'should respond to .admin?' do
-      expect(admin.admin?).to be true
+    it 'shuold create a has_role? helper method' do
+      expect(subject).to respond_to(:has_role?)
     end
 
-    example 'should respond to .contributor?' do
-      expect(contributor.contributor?).to be true
+    it 'should assign corresponding .has_role? methods on Role#create' do
+      create(:role, name: 'admin')
+      expect(subject.has_role?(:admin)).to be false
     end
 
-    example 'should respond to .member?' do
-      expect(member.member?).to be true
+    it 'should add roles to user' do
+      create(:role, name: 'admin')
+      subject.add_role(:admin)
+      expect(subject.has_role?(:admin)).to be true
     end
 
-    example 'should automatically assign member role to user' do
-      expect(subject.member?).to be true
+    it 'should remove roles from user' do
+      admin = create(:user, :admin)
+      admin.remove_role(:admin)
+      expect(admin.has_role?(:admin)).to be false
     end
 
+    it 'should not b*tch and moan about non-existing roles' do
+      expect(subject.has_role?(:foobaritto)).to be false
+    end
 
   end
 

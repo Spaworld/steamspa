@@ -18,7 +18,9 @@ gem 'hirb'
 gem 'pry-rails'
 gem 'pry-byebug'
 
-gem "paperclip", "~> 5.0.0"
+gem 'paperclip', '~> 5.0.0'
+
+gem 'rolify'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'

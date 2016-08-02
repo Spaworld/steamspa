@@ -150,6 +150,7 @@ GEM
     rake (11.2.2)
     rdoc (4.2.2)
       json (~> 1.4)
+    rolify (5.1.0)
     rspec-core (3.5.1)
       rspec-support (~> 3.5.0)
     rspec-expectations (3.5.0)
@@ -232,6 +233,7 @@ DEPENDENCIES
   pry-rails
   puma
   rails (= 4.2.6)
+  rolify
   rspec-rails (~> 3.5)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
