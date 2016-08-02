@@ -12,6 +12,11 @@ FactoryGirl.define do
         user.add_role(:admin)
       end
     end
+    trait(:with_photos) do
+      after(:create) do |user|
+        user.photos << create_list(:photo, 1)
+      end
+    end
 
   end
 
