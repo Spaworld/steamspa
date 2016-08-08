@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
+  root to: 'welcome#index'
   namespace :admin do
 
     # Dashboard
@@ -10,4 +14,5 @@ Rails.application.routes.draw do
     resources :posts
     resources :users
   end
+
 end

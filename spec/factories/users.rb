@@ -7,6 +7,8 @@ FactoryGirl.define do
     username   { Faker::Internet.user_name }
     phone      { Faker::PhoneNumber.cell_phone }
     email      { Faker::Internet.email }
+    password              'password'
+    password_confirmation 'password'
     trait(:admin) do
       after(:create) do |user|
         user.add_role(:admin)

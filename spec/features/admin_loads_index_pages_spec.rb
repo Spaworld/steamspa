@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.feature "AdminLoadsIndexPages", type: :feature do
 
   example 'should see the dashboard' do
+    login_as(create(:user,:admin), scope: :user )
     visit admin_dashboard_path
     expect(page).to have_content('Dashboard')
   end
@@ -10,6 +11,7 @@ RSpec.feature "AdminLoadsIndexPages", type: :feature do
   context 'should see links to' do
 
     before(:each) do
+      login_as(create(:user,:admin), scope: :user )
       visit admin_dashboard_path
     end
 

@@ -21,6 +21,8 @@ gem 'pry-byebug'
 gem 'paperclip', '~> 5.0.0'
 
 gem 'rolify'
+gem 'devise'
+gem 'cancancan'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.5'

@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'cancan/matchers'
 
 RSpec.describe User, type: :model do
 
@@ -49,6 +50,22 @@ RSpec.describe User, type: :model do
 
     it 'should not b*tch and moan about non-existing roles' do
       expect(subject.has_role?(:foobaritto)).to be false
+    end
+
+  end
+
+  describe 'abilities' do
+
+    subject(:ability) { Ability.new(user) }
+
+    context 'admin' do
+      let(:user) { create(:user, :admin) }
+      it { should be_able_to(:manage, :all) }
+    end
+
+    context 'user' do
+      let(:user) { create(:user) }
+      it { should be_able_to(:read, :all) }
     end
 
   end
